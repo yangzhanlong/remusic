@@ -1,6 +1,7 @@
 package com.wm.remusic.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -418,6 +419,7 @@ public class MoreFragment extends AttachDialogFragment {
         }
 
         commonAdapter.setOnItemClickListener(new OverFlowAdapter.OnRecyclerViewItemClickListener() {
+            @SuppressLint("StaticFieldLeak")
             @Override
             public void onItemClick(View view, String data) {
                 switch (Integer.parseInt(data)) {
@@ -502,6 +504,8 @@ public class MoreFragment extends AttachDialogFragment {
 
                         dismiss();
                         break;
+                        default:
+                            break;
                 }
             }
         });

@@ -1,5 +1,6 @@
 package com.wm.remusic.widget;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
@@ -198,6 +199,7 @@ public class LoodView extends FrameLayout {
         viewPager.addOnPageChangeListener(new MyPageChangeListener());
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void initImageView() {
         imageResIds = new int[]{
                 R.mipmap.first,
@@ -240,7 +242,8 @@ public class LoodView extends FrameLayout {
 
             @Override
             protected void onPostExecute(Void aVoid) {
-                for (int i = 0; i < 7; i++) {
+                int size = Math.min(imageViewList.size(), imageNet.size());
+                for (int i = 0; i < size; i++) {
                     imageViewList.get(i).setImageURI(Uri.parse(imageNet.get(i)));
                 }
             }

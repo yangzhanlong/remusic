@@ -222,7 +222,7 @@ public class DownloadTask implements Runnable {
             downloadStatus = DownloadStatus.DOWNLOAD_STATUS_START;
 
             onStart();
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(url)
                     .header("RANGE", "bytes=" + completedSize + "-")//  Http value set breakpoints RANGE
                     .addHeader("Referer", url)

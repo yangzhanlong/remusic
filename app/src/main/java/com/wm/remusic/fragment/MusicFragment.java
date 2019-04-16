@@ -1,6 +1,7 @@
 package com.wm.remusic.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -135,6 +136,7 @@ public class MusicFragment extends BaseFragment {
 
 
     //刷新列表
+    @SuppressLint("StaticFieldLeak")
     public void reloadAdapter() {
         if (mAdapter == null) {
             return;
@@ -213,6 +215,8 @@ public class MusicFragment extends BaseFragment {
                 mPreferences.setSongSortOrder(SortOrder.SongSortOrder.SONG_ALBUM);
                 reloadAdapter();
                 return true;
+                default:
+                    break;
 
         }
         return super.onOptionsItemSelected(item);

@@ -44,7 +44,7 @@ public class HttpUtil {
         try {
             mOkHttpClient.setConnectTimeout(1000, TimeUnit.MINUTES);
             mOkHttpClient.setReadTimeout(1000, TimeUnit.MINUTES);
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(url)
                     .build();
             Response response = mOkHttpClient.newCall(request).execute();
@@ -72,7 +72,7 @@ public class HttpUtil {
 
             mOkHttpClient.setConnectTimeout(1000, TimeUnit.MINUTES);
             mOkHttpClient.setReadTimeout(1000, TimeUnit.MINUTES);
-            Request.Builder builder = new Request.Builder()
+            Request.Builder builder = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(url);
             if (forceCache) {
                 builder.cacheControl(CacheControl.FORCE_CACHE);
@@ -198,7 +198,7 @@ public class HttpUtil {
         try {
             mOkHttpClient.setConnectTimeout(1000, TimeUnit.MINUTES);
             mOkHttpClient.setReadTimeout(1000, TimeUnit.MINUTES);
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(action1)
                     .build();
             Response response = mOkHttpClient.newCall(request).execute();
@@ -229,7 +229,7 @@ public class HttpUtil {
 
             mOkHttpClient.setConnectTimeout(1000, TimeUnit.MINUTES);
             mOkHttpClient.setReadTimeout(1000, TimeUnit.MINUTES);
-            Request.Builder builder = new Request.Builder()
+            Request.Builder builder = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(action1);
             if (forceCache) {
                 builder.cacheControl(CacheControl.FORCE_CACHE);
@@ -261,7 +261,7 @@ public class HttpUtil {
         try {
             mOkHttpClient.setConnectTimeout(3000, TimeUnit.MINUTES);
             mOkHttpClient.setReadTimeout(3000, TimeUnit.MINUTES);
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(action1)
 //                    .addHeader("Referer","http://music.163.com/")
 //                    .addHeader("Cookie", "appver=1.5.0.75771")
@@ -296,7 +296,7 @@ public class HttpUtil {
                 try {
                     mOkHttpClient.setConnectTimeout(1000, TimeUnit.MINUTES);
                     mOkHttpClient.setReadTimeout(1000, TimeUnit.MINUTES);
-                    Request request = new Request.Builder()
+                    Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                             .url(url)
                             .build();
                     Response response = mOkHttpClient.newCall(request).execute();
@@ -324,7 +324,7 @@ public class HttpUtil {
                     //         .add("",)
                     .build();
             Log.e("post", "p");
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(action)
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .header("Host", "music.163.com")
@@ -362,7 +362,7 @@ public class HttpUtil {
                     "\"encSecKey\": \"ae878167c394a959699c025a5c36043d0ae043c42d7f55fe4d1191c8ac9f3abe285b78c4a25ed6d9394a0ba0cb83a9a62de697199bd337f1de183bb07d6764a051495ea873ad615bb0a7e69f44d9168fc78ed1d61feb142ad06679dce58257ee9005756a18032ff499a4e24f7658bb59de2219f21f568301d43dba500e0c2d3b\"}";
             RequestBody requestBody = RequestBody.create(MediaType.parse("JSON"), json);
             Log.e("post", "p");
-            Request request = new Request.Builder()
+            Request request = new Request.Builder().addHeader("user-agent", "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:0.9.4)")
                     .url(action)
                     .header("Content-Type", "application/x-www-form-urlencoded")
                     .header("Host", "music.163.com")
