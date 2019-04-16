@@ -1,0 +1,88 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // MultiDex分包方法
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    //防止编译的时候oom、GC
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+
+    buildToolsVersion '28.0.3'
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // 把implementation 用api代替,它是对外部公开的, 所有其他的module就不需要添加该依赖
+    api rootProject.ext.dependencies["appcompat_v7"]
+    api rootProject.ext.dependencies["constraint_layout"]
+    androidTestImplementation rootProject.ext.dependencies["runner"]
+    androidTestImplementation rootProject.ext.dependencies["rules"]
+    androidTestImplementation rootProject.ext.dependencies["espresso_core"]
+    testImplementation rootProject.ext.dependencies["junit"]
+    api rootProject.ext.dependencies["design"]
+    api rootProject.ext.dependencies["support-v4"]
+    api rootProject.ext.dependencies["cardview-v7"]
+    api rootProject.ext.dependencies["recyclerview-v7"]
+    api rootProject.ext.dependencies["xrecyclerview"]
+    // MultiDex分包方法
+    api rootProject.ext.dependencies["multidex"]
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+    api rootProject.ext.dependencies["butterknife"]
+    // 网络
+    api rootProject.ext.dependencies["retrofit2"]
+    api rootProject.ext.dependencies["converter-gson"]
+    api rootProject.ext.dependencies["adapter-rxjava2"]
+    api rootProject.ext.dependencies["rxjava2:rxandroid"]
+    api rootProject.ext.dependencies["rxjava2"]
+    api rootProject.ext.dependencies["rxjava:rxandroid"]
+    api rootProject.ext.dependencies["rxjava"]
+    // 图片
+    api rootProject.ext.dependencies["glide"]
+    api rootProject.ext.dependencies["glide:okhttp3"]
+    annotationProcessor rootProject.ext.dependencies["glide_compiler"]
+    // 图片缩放
+    api rootProject.ext.dependencies["photoview"]
+    // 时间，地址，条件选择器
+    api rootProject.ext.dependencies["pickerView"]
+    // 上拉加载
+    api rootProject.ext.dependencies["smartRefreshLayout"]
+    //eventBus 发布/订阅事件总线
+    api rootProject.ext.dependencies["eventbus"]
+    //banner轮播图
+    api rootProject.ext.dependencies["banner"]
+    //流式布局
+    api rootProject.ext.dependencies["flexbox"]
+    //圆形头像
+    api rootProject.ext.dependencies["circleimageview"]
+
+    //沉浸式状态栏
+    api rootProject.ext.dependencies["barlibrary"]
+    api rootProject.ext.dependencies["okhttp3"]
+    api rootProject.ext.dependencies["rxlifecycle"]
+    api rootProject.ext.dependencies["rxlifecycle-android"]
+    api rootProject.ext.dependencies["rxlifecycle-components"]
+    api rootProject.ext.dependencies["rxpermissions"]
+}

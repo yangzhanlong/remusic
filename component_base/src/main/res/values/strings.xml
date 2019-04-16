@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">component_base</string>
+    <string name="base_tv_return">Back</string>
+
+    <string name="tv_home_page">首页</string>
+    <string name="tv_search">Search</string>
+    <string name="tv_search_for_your_favorite_content">Search</string>
+    <string name="tv_cancel">Cancel</string>
+    <string name="tv_sure">Confirm</string>
+    <string name="tv_network_disconnected">Network disconnected</string>
+
+    <!--珠宝列表-->
+    <string name="jewelry_tv_title">珠宝</string>
+
+    <!--购物车-->
+    <string name="cart_tv_title">购物车</string>
+    <string name="cart_tv_manager">管理</string>
+    <string name="cart_tv_finish">完成</string>
+</resources>

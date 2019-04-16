@@ -1,15 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.wm.remusic"
-        minSdkVersion 11
-        targetSdkVersion 23
-        versionCode 1
-        versionName "1.01"
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // MultiDex分包方法
+        multiDexEnabled true
+
+        compileOptions {
+
+            sourceCompatibility JavaVersion.VERSION_1_8
+
+            targetCompatibility JavaVersion.VERSION_1_8
+
+        }
         //start
         renderscriptTargetApi 17
         renderscriptSupportModeEnabled true
@@ -21,21 +32,35 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //防止编译的时候oom、GC
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.facebook.fresco:fresco:0.9.0'
-    compile 'com.squareup.okhttp:okhttp:2.7.2'
-    compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.2'
-    compile 'com.squareup.retrofit:retrofit:1.9.0'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project(':component_base')
+
+    implementation 'com.facebook.fresco:fresco:0.9.0'
+    implementation 'com.squareup.okhttp:okhttp:2.7.2'
+    implementation 'com.squareup.okhttp:okhttp-urlconnection:2.7.2'
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
     //    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
-    compile 'com.github.promeg:tinypinyin:1.0.0'
-    compile files('libs/activation.jar')
-    compile files('libs/additionnal.jar')
-    compile files('libs/mail.jar')
+    implementation 'com.github.ksoichiro:android-observablescrollview:1.6.0'
+    implementation 'com.github.promeg:tinypinyin:1.0.0'
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
+
+    // butterKnife_compiler
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
+
+    implementation 'cn.jzvd:jiaozivideoplayer:6.4.3'
+    // Loading
+    implementation 'com.dyhdyh.loadingbar:loadingbar:1.4.9'
+    implementation 'com.readystatesoftware.systembartint:systembartint:1.0.3'
 }
